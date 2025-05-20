@@ -1,10 +1,13 @@
+import { useContext } from "react";
 import LoginWithSocialMedia from "../Components/LoginWithSocialMedia";
 import SocialMidea from "../Components/SocialMidea";
 
 
 const RightNavbar = () => {
+    
     return (
         <div>
+           
             <section className="">
                 <LoginWithSocialMedia></LoginWithSocialMedia>
             </section>

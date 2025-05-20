@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { ContextNews } from "../Authentication/GoogleAuth";
+
+
+
+
 
 
 const LeftCetagory = () => {
+
+    // const { name } = useContext(ContextNews)
+    // console.log(name)
 
     const [categorys, setCategotys] = useState([])
 
@@ -15,13 +23,13 @@ const LeftCetagory = () => {
     }, [])
 
 
-    
+
 
     return (
         <div>
             <div className="flex flex-col gap-4 text-center">
                 {
-                    categorys.map(category => category ? <NavLink to={`/categorie/${category.category_id}`} className="btn btn-base-100 border-none " key={category.category_id}> {category.category_name} </NavLink>  : 'raihan'
+                    categorys.map(category => category ? <NavLink to={`/categorie/${category.category_id}`} className="btn btn-base-100 border-none " key={category.category_id}> {category.category_name} </NavLink> : 'raihan'
                     )
                 }
             </div>
