@@ -4,6 +4,10 @@ import NewsFead from "../Components/NewsFead";
 import AuthenticationAuth from "../Page/AuthenticationAuth";
 import Login from "../Page/Login";
 import Resgister from "../Page/Resgister";
+import SingleNewsDetails from "../Page/SingleNewsDetails";
+import PrivetUser from "./PrivetUser";
+
+
 
 const Router = createBrowserRouter([
     {
@@ -27,6 +31,11 @@ const Router = createBrowserRouter([
         ],
     },
     {
+        path: "/news/:id",
+        element: <PrivetUser> <SingleNewsDetails></SingleNewsDetails> </PrivetUser>,
+        loader: ({ params }) => fetch(`http://openapi.programming-hero.com/api/news/${params.id}`)
+    },
+    {
         path: "/",
         element: <AuthenticationAuth></AuthenticationAuth>,
         children: [
@@ -41,8 +50,8 @@ const Router = createBrowserRouter([
         ],
     },
     {
-        path : "*", 
-        element : <h2>"Here are not Data"</h2>
+        path: "*",
+        element: <h2>"Here are not Data"</h2>
     },
 
 ])

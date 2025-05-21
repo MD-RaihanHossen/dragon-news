@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { FaEye } from 'react-icons/fa';
 import { AiFillStar } from 'react-icons/ai';
 
-const NewsCard = ({ news }) => {
+const   NewsCard = ({ news }) => {
     const {
         _id,
         title,
