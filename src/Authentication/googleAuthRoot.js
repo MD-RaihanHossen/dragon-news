@@ -12,13 +12,6 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_storageBucket,
   messagingSenderId: import.meta.env.VITE_messagingSenderId,
   appId: import.meta.env.VITE_appId
-
-  // apiKey: "AIzaSyCwVe4m4Ck6OzIhtu_Ee-bVW4TG2nBfTYM",
-  // authDomain: "dragon-news-39d9b.firebaseapp.com",
-  // projectId: "dragon-news-39d9b",
-  // storageBucket: "dragon-news-39d9b.firebasestorage.app",
-  // messagingSenderId: "1058466761195",
-  // appId: "1:1058466761195:web:14d14f1ee980164683b1ae"
 };
 
 // Initialize Firebase
