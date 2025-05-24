@@ -1,12 +1,15 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ContextNews } from "../Authentication/GoogleAuth";
 
 
 const Resgister = () => {
 
 
-    const { createUser } = useContext(ContextNews)
+    const { createUser, UpdateUser } = useContext(ContextNews)
+
+    //for navigate home page 
+    const navigate = useNavigate()
 
     const hendleResgistation = (e) => {
         e.preventDefault()
@@ -20,6 +23,10 @@ const Resgister = () => {
         const email = form.get("email")
         const password = form.get("password")
 
+        const userObject = {
+            displayName: name,
+            photoURL: url,
+        }
 
         //for create new user 
         createUser(email, password)
@@ -27,6 +34,18 @@ const Resgister = () => {
                 // Signed up 
                 const user = userCredential.user;
                 console.log(user)
+
+                //update user Profile
+                UpdateUser(userObject)
+                    .then((result) => {
+                        // Profile updated!
+                        console.log(result)
+                        navigate("/")
+                    }).catch((error) => {
+                        // An error occurred
+                        console.log(error)
+                    });
+
             }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ContextNews } from "../Authentication/GoogleAuth";
 
 
@@ -8,8 +8,15 @@ const Login = () => {
     //get loginUser  Data
     const { loginUser} = useContext(ContextNews)
 
-    //user navigation for change page 
+    // see curent location for login 
+    //direct login a gele location sudu login dekhabe but privet router ar ar madhome login a dukle ba navigate korle state a navigate ar madhome ja pathabo tai set hobe 
+    const location = useLocation()
+    // console.log(location)
+    // console.log(location.state)
+
+    //useNavigate for move to news single plage 
     const navigate = useNavigate()
+
 
     const hendleLogin = (e) => {
         e.preventDefault()
@@ -24,7 +31,7 @@ const Login = () => {
                 // Signed in 
                 const user = userCredential.user;
                 console.log(user)
-                navigate("/")
+                navigate(location?.state ? location.state : "/")
 
             }).catch((error) => {
                 const errorCode = error.code;

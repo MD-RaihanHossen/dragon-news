@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { auth } from "./googleAuthRoot";
 import { useEffect } from "react";
 
@@ -14,7 +14,7 @@ const GoogleAuth = ({ children }) => {
     //create loader for user 
     const [loader, setLoader] = useState(true)
 
-    console.log(loader, user)
+    // console.log(loader, user)
    
 
 
@@ -50,6 +50,11 @@ const GoogleAuth = ({ children }) => {
         return signOut(auth)
     }
 
+    //update your user profile
+    const UpdateUser = (userObject) =>{
+        return updateProfile(auth.currentUser, userObject)
+    }
+
     //Get the currently signed-in user
     useEffect(() => {
        const unSuscribe = onAuthStateChanged(auth, (user) => {
@@ -77,6 +82,7 @@ const GoogleAuth = ({ children }) => {
         createUser, 
         loginUser, 
         logOut,
+        UpdateUser,
     }
 
     return (

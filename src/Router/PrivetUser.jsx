@@ -1,11 +1,16 @@
 import { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { ContextNews } from "../Authentication/GoogleAuth";
 import Loder from "../Components/Loder";
 
 
 const PrivetUser = ({ children }) => {
     const { user, loader } = useContext(ContextNews)
+
+    //what is my right location path
+    const location = useLocation()
+    // console.log(location)
+    // console.log(location.pathname)
 
     if(loader){
         return <Loder></Loder>
@@ -15,7 +20,7 @@ const PrivetUser = ({ children }) => {
     return (
         <div>
             {
-                user ? children : <Navigate to={"/login"}></Navigate>
+                user ? children : <Navigate state={location.pathname} to={"/login"}></Navigate>
             }
         </div>
     );

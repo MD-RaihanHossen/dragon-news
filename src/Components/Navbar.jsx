@@ -7,14 +7,14 @@ const Navbar = () => {
 
     const { user, logOut } = useContext(ContextNews)
 
-     //user navigation for change page 
+    //user navigation for change page 
     const navigate = useNavigate()
 
     const hengleLogOut = () => {
         logOut()
             .then(() => {
                 // Sign-out successful.
-               console.log('Sign-out successful')
+                console.log('Sign-out successful')
                 navigate('/login')
             }).catch((error) => {
                 // An error happened.
@@ -37,7 +37,10 @@ const Navbar = () => {
             <div className="flex-1 ">
                 <div className="flex justify-end">
                     <div className="flex gap-5 justify-center items-center">
-                        <img src={userPhoto} alt="" />
+
+                        {
+                            user && user?.displayName ? <div className="flex items-center gap-2"><p className="text-2xl font-bold ">{user?.displayName}</p> <div> <img className="w-14 h-14 rounded-full object-cover" src={user?.photoURL} alt="" /> </div> </div> : <img src={userPhoto} alt="" />
+                        }
                         {
                             user && user?.email ? (<Link to={'/login'} className="btn btn-neutral text-raihan" onClick={hengleLogOut}>
                                 Log Out
