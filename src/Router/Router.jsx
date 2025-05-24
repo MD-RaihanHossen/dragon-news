@@ -26,14 +26,15 @@ const Router = createBrowserRouter([
                 element: <NewsFead></NewsFead>,
                 // loader : ({params}) => console.log(params.id),
                 // loader : ({params}) => console.log(params.id) jeitai click korbo shetai id pawya jabe 
-                loader: ({ params }) => fetch(`http://openapi.programming-hero.com/api/news/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
+
             },
         ],
     },
     {
         path: "/news/:id",
         element: <PrivetUser> <SingleNewsDetails></SingleNewsDetails> </PrivetUser>,
-        loader: ({ params }) => fetch(`http://openapi.programming-hero.com/api/news/${params.id}`)
+        loader: ({ params }) => fetch(`https://openapi.programming-hero.com/api/news/${params.id}`)
     },
     {
         path: "/",

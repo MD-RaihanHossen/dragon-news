@@ -1,23 +1,16 @@
-import { useContext, useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { ContextNews } from "../Authentication/GoogleAuth";
-
-
-
-
 
 
 const LeftCetagory = () => {
 
-    // const { name } = useContext(ContextNews)
-    // console.log(name)
+
 
     const [categorys, setCategotys] = useState([])
 
     //get catrgory data 
     useEffect(() => {
-        fetch('http://openapi.programming-hero.com/api/news/categories')
+        fetch('https://openapi.programming-hero.com/api/news/categories')
             .then(res => res.json())
             .then(data => setCategotys(data.data.news_category))
     }, [])
